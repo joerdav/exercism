@@ -52,44 +52,37 @@ static void test_word_with_duplicated_letter_in_mixed_case_lowercase_first(void)
 
 static void test_hypothetical_isogrammic_word_with_hyphen(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_TRUE(is_isogram("thumbscrew-japingly"));
 }
 
 static void
 test_hypothetical_word_with_duplicated_character_following_hyphen(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_FALSE(is_isogram("thumbscrew-jappingly"));
 }
 
 static void test_isogram_with_duplicated_hyphen(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_TRUE(is_isogram("six-year-old"));
 }
 
 static void test_made_up_name_that_is_an_isogram(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_TRUE(is_isogram("Emily Jung Schwartzkopf"));
 }
 
 static void test_duplicated_character_in_the_middle(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_FALSE(is_isogram("accentor"));
 }
 
 static void test_same_first_and_last_characters(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_FALSE(is_isogram("angola"));
 }
 
 static void test_word_with_duplicated_character_and_with_two_hyphens(void)
 {
-   TEST_IGNORE();
    TEST_ASSERT_FALSE(is_isogram("up-to-date"));
 }
 

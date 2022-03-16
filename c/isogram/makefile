@@ -20,6 +20,8 @@ ASANFLAGS += -fno-omit-frame-pointer
 .PHONY: test
 test: tests.out
 	@./tests.out
+.PHONY: btest
+btest: tests.out
 
 .PHONY: memcheck
 memcheck: ./*.c ./*.h

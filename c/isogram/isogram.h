@@ -5,5 +5,6 @@
 #include <ctype.h>
 
 bool is_isogram(const char phrase[]);
+bool is_in_array(char *used, char find); 
 
 #endif

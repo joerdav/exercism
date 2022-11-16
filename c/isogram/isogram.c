@@ -1,34 +1,22 @@
 #include "isogram.h"
-
-#include <ctype.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-bool is_in_array(char *used, char find) {
-   for (unsigned long i = 0; i < strlen(used); i++) {
-      if (used[i] == find) {
-         return true;
-      }
-   }
-   return false;
-}
-
-bool is_isogram(const char *phrase) 
-{
+bool is_isogram(const char phrase[]) {
    if (phrase == NULL) return false;
-   char used[26];
-   memset (used, 0 , sizeof(used));
-   int usedlen = 0;
-   for (unsigned long i = 0; i < strlen(phrase); i++) {
-      char l = tolower(phrase[i]);
-      if (!isalpha(l)) {
+   bool found[ALPHABET_LEN]={0};
+   for (size_t i = 0; phrase[i]; i++) {
+      unsigned char letter = phrase[i];
+      if (!isalpha(letter)) {
          continue;
       }
-      if (is_in_array(used, l)) {
+      int lower = tolower(letter)-'a';
+      if (found[lower]) {
          return false;
       }
-      used[usedlen++] = l;
+      found[lower] = true;
    }
    return true;
 }

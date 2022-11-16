@@ -2,9 +2,9 @@
 #define ISOGRAM_H
 
 #include <stdbool.h>
-#include <ctype.h>
+
+#define ALPHABET_LEN 26
 
 bool is_isogram(const char phrase[]);
-bool is_in_array(char *used, char find); 
 
 #endif

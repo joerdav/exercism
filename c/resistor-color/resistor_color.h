@@ -1,12 +1,15 @@
 #ifndef RESISTOR_COLOR_H
 #define RESISTOR_COLOR_H
 
+# define COLORS \
+	BLACK, BROWN, RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, GREY, WHITE
+
 typedef enum {
-	BLACK, BROWN, RED, ORANGE, YELLOW,
-	GREEN, BLUE, VIOLET, GREY, WHITE
+	COLORS
 } resistor_band_t;
 
-int color_code(resistor_band_t r);
-int * colors();
+int color_code(resistor_band_t);
+
+resistor_band_t* colors();
 
 #endif

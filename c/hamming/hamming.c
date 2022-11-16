@@ -2,13 +2,11 @@
 #include <string.h>
 
 int compute(const char *lhs, const char *rhs) {
-   int lenl = strlen(lhs);
-   int lenr = strlen(rhs);
-   if (lenl != lenr) return -1;
-   if (lenl == 0) return 0;
+   if (!lhs || !rhs) return -1;
    int diff = 0;
-   for (int i = 0; i < lenl; i++) {
-      if (lhs[i] != rhs[i]) diff++;
+   char l, r;
+   for (l = *lhs, r = *rhs; l && r; l=*++lhs, r=*++rhs) {
+      if (l!=r) diff++;
    }
-   return diff;
+   return l || r ? -1 : diff;
 }

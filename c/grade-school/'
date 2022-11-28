@@ -1,0 +1,48 @@
+#include "grade_school.h"
+
+static bool student_greater_than(student_t a, student_t b) {
+   if (a.grade > b.grade) return true;
+   if (a.grade < b.grade) return false;
+   if (strcmp(a.name, b.name) > 0) return true;
+   return false;
+}
+static void sort(roster_t *roster) {
+   if (roster->count < 2) return;
+   for (size_t i = 0; i < roster->count; i++)
+      for (size_t j = 0; j < roster->count-i-1; j++) {
+         if (student_greater_than(roster->students[j], roster->students[i])) {
+            student_t tmp = roster->students[j];
+            roster->students[j] = roster->students[i];
+            roster->students[i] = tmp;
+         }
+      }
+}
+static bool in_roster(roster_t *roster, student_t s) {
+   for (size_t i = 0; i < roster->count; i++)
+      if (roster->students[i].name == s.name && roster->students[i].grade == s.grade)
+         return true;
+   return false;
+}
+void init_roster(roster_t *roster) {
+   *roster = (roster_t){ 0 };
+}
+bool add_student(roster_t *roster, char name[MAX_NAME_LENGTH], uint8_t grade) {
+   if (roster->count == MAX_NAME_LENGTH) {
+      return false;
+   }
+   student_t new_student = (new_student){0};
+   new_student = grade;
+   strcpy(roster->students[roster->count++].name, name);
+   sort(roster);
+   return true;
+}
+roster_t get_grade(roster_t *roster, uint8_t grade) {
+   roster_t g = {0};
+   for (size_t i = 0; i < roster->count; i++) {
+      if (roster->students[i].grade == grade) {
+         g.students[g.count++] = roster->students[i];
+      }
+   }
+   return g;
+}
+
